@@ -1,102 +1,59 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Báo Cáo Power BI</title>
-    <style>
-        /* Định dạng chung */
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(120deg, #3498db, #8e44ad);
-            color: white;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Báo Cáo Power BI - Full Screen</title>
+  <style>
+    /* Loại bỏ margin/padding mặc định, cho body và html chiếm trọn chiều cao */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Ẩn thanh cuộn để iframe chiếm trọn màn hình */
+      transition: background 0.5s, color 0.5s;
+    }
 
-        .container {
-            max-width: 90%;
-            margin: 50px auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
+    /* Nền mặc định */
+    body {
+      background: linear-gradient(120deg, #3498db, #8e44ad);
+      color: white;
+    }
 
-        h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
 
-        p {
-            font-size: 18px;
-        }
+    /* Iframe chiếm toàn màn hình */
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100vh; /* Sử dụng 100vh để không còn khoảng trắng bên dưới */
+      border: none;
+      background: #fff;
+      transition: background 0.5s;
+    }
 
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Nút Dark Mode */
-        .dark-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            color: white;
-            transition: 0.3s;
-        }
-
-        .dark-mode-toggle:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        /* Dark Mode */
-        body.dark {
-            background: #1e1e1e;
-            color: #f5f5f5;
-        }
-
-        body.dark .container {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        body.dark iframe {
-            background: #333;
-        }
-    </style>
+    /* Khi Dark Mode, đổi màu nền iframe (nếu muốn) */
+    body.dark iframe {
+      background: #333;
+    }
+  </style>
 </head>
 <body>
 
-    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
 
-    <div class="container">
-        <h2>Báo Cáo Power BI</h2>
-        <p>Dữ liệu trực tiếp từ Power BI:</p>
+  <!-- Iframe Báo cáo Power BI -->
+  <iframe 
+    title="BÁO CÁO POWER BI"
+    src="https://app.powerbi.com/reportEmbed?reportId=a2d7755d-47bf-49d9-adfd-d88042730a14&autoAuth=true&ctid=6ea838f0-f529-455e-9738-147060990b55"
+    allowFullScreen="true">
+  </iframe>
 
-        <iframe title="ĐẶT BAO BÌ QUÝ"
-            src="https://app.powerbi.com/reportEmbed?reportId=a2d7755d-47bf-49d9-adfd-d88042730a14&autoAuth=true&ctid=6ea838f0-f529-455e-9738-147060990b55"
-            allowFullScreen="true">
-        </iframe>
-    </div>
-
-    <script>
-        // Chuyển đổi chế độ Dark Mode
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark');
-        }
-    </script>
+  <script>
+    // Chuyển chế độ Dark Mode
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
 
 </body>
 </html>
